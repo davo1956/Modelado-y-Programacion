@@ -1,1 +1,1 @@
-# Practicas-Haskell
+# Practicas-C
