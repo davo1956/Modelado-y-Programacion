@@ -66,7 +66,7 @@ public abstract class Plataforma implements InterfazGeneral{
      * @return recomendacion es la recomendacion del dia.
      */
     public String getRecomendacionDelDia(){
-        return recomendacionDelDia;
+        return recomendacionDiaria();
     }
 
     public void agrega(Cliente c){

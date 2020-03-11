@@ -48,8 +48,8 @@
         erika.suscribir(youtube, 0);
 
 
-        for(int i = 1; 1<=5; i++){
-          System.out.println("\nDía:" + 1);
+        for(int i = 1; i<=5; i++){
+          System.out.println("\nDía:" + i);
           if(i == 2){
             diego.suscribir(twitch, 1);
             erika.suscribir(spotify, 1);
