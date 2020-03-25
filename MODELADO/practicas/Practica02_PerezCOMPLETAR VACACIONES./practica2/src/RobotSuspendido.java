@@ -11,7 +11,7 @@ public class RobotSuspendido implements EstadoRobot {
      * @param newRobot
      */
 
-    public RobotSuspendido(final Robot newRobot){
+    public RobotSuspendido(Robot newRobot){
         robot = newRobot;
     }
 

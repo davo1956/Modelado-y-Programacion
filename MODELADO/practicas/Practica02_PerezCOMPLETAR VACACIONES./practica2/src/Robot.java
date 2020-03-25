@@ -1,4 +1,4 @@
-import javax.swing.plaf.basic.BasicBorders.RolloverButtonBorder;
+//import javax.swing.plaf.basic.BasicBorders.RolloverButtonBorder;
 
 /**
  * Clase de Robot que nos dara su estado inicial.
@@ -35,7 +35,7 @@ public class Robot {
         robotReabasteciendo = new RobotReabasteciendo(this);
         robotRecibiendoOrden = new RobotRecibiendoOrden(this);
         robotSuspendido = new RobotSuspendido(this);
-        robotTrabajando = new robotTrabajando(this);
+        robotTrabajando = new RobotTrabajando(this);
 
         estadoActual = robotSuspendido;
     }
