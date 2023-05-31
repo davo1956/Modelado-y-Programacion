@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="practica4" default="all" basedir="." >
+
+  <property name="build.dir" value="build" />
+  <property name="src.dir"   value="src" />
+  <property name="lib.dir"   value="lib" />
+  <property name="doc.dir"   value="doc" />
+
+  <target name="all" depends="practica4.jar" />
+
+  <target name="practica4.jar" depends="compile.practica4">
+    <jar jarfile="practica4.jar">
+      <zipfileset dir="${build.dir}" prefix="" />
+      <manifest>
+        <attribute name="Main-Class" value="Practica4"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="compile.practica4">
+    <mkdir dir="${build.dir}"/>
+    <javac srcdir="${src.dir}"
+           destdir="${build.dir}"
+           debug="true"
+           debuglevel="lines,vars,source"
+           includeantruntime="false"
+           deprecation="true"
+           nowarn="off">
+      <classpath>
+        <fileset dir="${lib.dir}">
+          <include name="*.jar"/>
+        </fileset>
+      </classpath>
+      <compilerarg value="-Xlint:unchecked"/>
+    </javac>
+  </target>
+
+  <target name="doc" depends="compile.practica4">
+    <mkdir dir="${doc.dir}"/>
+    <javadoc packagenames="mx.unam.ciencias.edd.*"
+             sourcepath="src"
+             defaultexcludes="yes"
+             destdir="${doc.dir}"
+             charset="UTF-8"
+             author="false"
+             version="false"
+             use="true"
+             windowtitle="Modelado y Programación">
+      <doctitle><![CDATA[<h1>Modelado y Programación</h1>]]></doctitle>
+      <link href="http://docs.oracle.com/javase/8/docs/api/" />
+      <classpath>
+        <pathelement location="${lib.dir}/junit.jar" />
+        <pathelement location="${lib.dir}/hamcrest-core.jar" />
+      </classpath>
+    </javadoc>
+  </target>
+
+  <target name="clean">
+    <delete file="practica4.jar"/>
+    <delete dir="${build.dir}"/>
+    <delete dir="${doc.dir}"/>
+  </target>
+
+  <target name="test" depends="compile.practica4">
+    <junit printsummary="yes" haltonfailure="no">
+      <formatter type="plain" usefile="false" />
+      <classpath>
+        <pathelement path="${build.dir}" />
+        <pathelement location="${lib.dir}/junit.jar" />
+        <pathelement location="${lib.dir}/hamcrest-core.jar" />
+      </classpath>
+      <batchtest fork="yes">
+        <fileset dir="${src.dir}">
+          <include name="**/*Test*.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="run" depends="compile.practica4">
+      <java jar="practica4.jar" fork="true"/>
+  </target>
+
+</project>
